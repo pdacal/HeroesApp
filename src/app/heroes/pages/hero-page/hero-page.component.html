@@ -1,0 +1,48 @@
+<!-- no hero-page.component.ts temos .pipe(delay(3000)) para ver o Loading -->
+<ng-template #divLoading>
+  <mat-grid-list cols="1">
+    <mat-grid-tile>
+      <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</ng-template>
+<!-- mostramos este div se hai hero, senon aparece divLoading -->
+<div *ngIf="hero; else divLoading" class="grid p-2">
+  <mat-card class="col-12 sm:col-6">
+    <mat-card-header>
+      <mat-card-title>{{hero.alter_ego}}</mat-card-title>
+      <mat-card-subtitle>{{hero.superhero}}</mat-card-subtitle>
+    </mat-card-header>
+    <img [src]="hero | heroImage" [alt]="hero.superhero"mat-card-image/>
+  </mat-card>
+
+  <mat-card class="col-12 sm:col-6">
+    <mat-card-header>
+      <mat-card-title>Información</mat-card-title>
+      <mat-card-subtitle>{{hero.superhero}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>Primera aparición:</mat-list-item>
+        <mat-list-item><mat-chip highlighted color="accent">{{hero.first_appearance}}</mat-chip></mat-list-item>
+        <!-- <mat-list-item>{{hero.characters}}</mat-list-item> -->
+        <mat-list-item>Personajes:</mat-list-item>
+        <mat-list-item>
+          <mat-chip-listbox>
+            <mat-chip *ngFor="let name of hero.characters.split(',') | slice:0:3" highlighted color="primary">
+              {{name}}
+            </mat-chip>
+          </mat-chip-listbox>
+        </mat-list-item>
+        <mat-list-item>Editorial:</mat-list-item>
+        <mat-list-item><mat-chip highlighted color="accent">{{hero.publisher}}</mat-chip></mat-list-item>
+        <mat-list-item>Alter Ego:</mat-list-item>
+        <mat-list-item><mat-chip highlighted color="primary">{{hero.alter_ego}}</mat-chip></mat-list-item>
+      </mat-list>
+
+      <button class="mt-5" mat-stroked-button color="warn" (click)="goBack()">Regresar</button>
+    </mat-card-content>
+  </mat-card>
+
+</div>

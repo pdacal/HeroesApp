@@ -1,0 +1,22 @@
+ <!-- hero. propiedade, podese ver en hero.interface.ts -->
+<!-- <ul>
+  <li *ngFor="let hero of heroes">
+    {{hero.superhero}}
+  </li>
+</ul> -->
+<h1>Listado de Héroes</h1>
+
+<mat-divider></mat-divider>
+
+<div class="grid mb-8 pt-2">
+<!-- col12 x defecto, smallscrren=col4, en medianas col3, en xl columnas de 2 -->
+  <div *ngFor="let hero of heroes"
+    class="col-12 sm:col-4 md:col-3 xl:col-2">
+    <!-- en [hero] de card.component, enviamoslle hero do ngFor -->
+    <heroes-hero-card [hero]="hero"></heroes-hero-card>
+  </div>
+
+</div>
+
+
+
