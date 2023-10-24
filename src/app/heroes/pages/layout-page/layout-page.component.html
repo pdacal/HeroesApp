@@ -29,8 +29,14 @@
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
     <span class="spacer"></span>
-    <button mat-button> Logout</button>
+    <span>{{user?.email}}</span><!--{{ user?.email }}-->
+    <button
+      mat-button
+      (click)="onLogout()"
+      > Logout</button>
+
   </mat-toolbar>
 
   <!-- ruta filla en emision -->

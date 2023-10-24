@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "usuario": "John Doe",
+      "user": "John Doe",
       "email": "john.due@gmail.com"
     }
   ],
@@ -30,6 +30,22 @@
       "alter_ego": "Jay Garrick",
       "first_appearance": "Flash Comics #1",
       "characters": "Jay Garrick, Barry Allen, Wally West, Bart Allen"
+    },
+    {
+      "id": "dc-green",
+      "superhero": "Green Lantern",
+      "publisher": "DC Comics",
+      "alter_ego": "Alan Scott",
+      "first_appearance": "All-American Comics #16",
+      "characters": "Alan Scott, Hal Jordan, Guy Gardner, John Stewart, Kyle Raynor, Jade, Sinestro, Simon Baz"
+    },
+    {
+      "id": "dc-arrow",
+      "superhero": "Green Arrow",
+      "publisher": "DC Comics",
+      "alter_ego": "Oliver Queen",
+      "first_appearance": "More Fun Comics #73",
+      "characters": "Oliver Queen"
     },
     {
       "id": "dc-wonder",
@@ -150,15 +166,6 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
-    },
-    {
-      "id": "mhnBSwr",
-      "superhero": "Comandante Sheppard",
-      "publisher": "Marvel Comics",
-      "alter_ego": "Sheppard",
-      "first_appearance": "Mass Effect #1",
-      "characters": "Ira Sheppard",
-      "alt_img": "https://i.pinimg.com/originals/ff/70/70/ff7070d186b8770bcb8ca38724078321.jpg"
     }
   ]
 }
