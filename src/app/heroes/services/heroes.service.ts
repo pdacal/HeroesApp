@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+  import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { Hero } from '../interfaces/hero.interface';
 import { environments } from 'src/environments/environments';
 
@@ -9,11 +9,7 @@ export class HeroesService {
 
   //URL de DESARROLLO
   private baseUrl: string = environments.baseUrl;
-
-
-
   constructor(private http: HttpClient) { }
-
 
   //esta funcion devolve un observable, que a vez vai estar emitindo un array de Hero[]
   getHeroes():Observable<Hero[]>{
@@ -37,6 +33,33 @@ export class HeroesService {
   getSuggestions(query:string): Observable<Hero[]>{
     return this.http.get<Hero[]>(`${ this.baseUrl }/heroes?q=${query}&_limit=6`);
   }
+
+  //---------------------------------------CRUD endpoints---------------------------------------------
+  //http.post -> ENGADIR
+  addHero( hero:Hero):Observable<Hero>{
+    return this.http.post<Hero>(`${ this.baseUrl }/heroes`, hero); //mando a data como segundo argumento
+  }
+  //http.patch -> ACTUALIZAR
+  updateHero( hero:Hero ):Observable<Hero>{
+    if(!hero.id) throw Error('Hero id is required'); //por si o novo obxeto cas modificacions ven vacio ou sen o id
+    return this.http.patch<Hero>(`${ this.baseUrl }/heroes/${hero.id}`, hero);
+  }
+  //http.delete -> ELIMINAR
+  /* se todo sae ben devolve true, se non existe ou algo vai mal -> false */
+  deleteHeroById( id:string ):Observable<boolean>{
+    return this.http.delete(`${ this.baseUrl }/heroes/${id}`)
+    .pipe(
+      map(resp => true ),
+      catchError( err => of(false) )
+
+      );
+  }
+
+/**
+ * Se un Observable non esta funcionando,
+ * comprobar que o metodo que escoita del, ten o subscribe (OLLO as rutas)
+ */
+
 
 
 }
